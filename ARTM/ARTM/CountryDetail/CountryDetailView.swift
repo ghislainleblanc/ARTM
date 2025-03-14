@@ -25,15 +25,8 @@ struct CountryDetailView: View {
     }
 }
 
-#Preview {
-    CountryDetailView(
-        country: .init(
-            id: UUID(),
-            name: "Canada",
-            flag: "🇨🇦",
-            continent: "America",
-            population: 34000000,
-            capital: "Ottawa"
-        )
-    )
-}
+//#Preview {
+//    CountryDetailView(
+//        country: Country()
+//    )
+//}

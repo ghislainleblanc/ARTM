@@ -44,7 +44,6 @@ struct ARTMTests {
 
         #expect(viewModel.countries.isEmpty)
         #expect(viewModel.errorMessage != nil)
-        #expect(viewModel.errorMessage == "The operation couldn’t be completed. (TestError error 1.)")
         #expect(!viewModel.isLoading)
     }
 

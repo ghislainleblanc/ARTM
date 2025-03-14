@@ -12,14 +12,8 @@ struct CountryDetailView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            AsyncImage(url: URL(string: country.flag)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 40)
-            } placeholder: {
-                ProgressView()
-            }
+            FlagAsyncImage(url: URL(string: country.flag))
+                .frame(height: 100)
 
             Text("country_detail_continent: \(country.continent)")
             Text("country_detail_population: \(country.population)")

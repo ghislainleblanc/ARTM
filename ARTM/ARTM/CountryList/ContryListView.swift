@@ -18,6 +18,9 @@ struct CountryListView: View {
         NavigationStack {
             if viewModel.isLoading {
                 ProgressView()
+            } else if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
             } else {
                 List(viewModel.countries) { country in
                     NavigationLink(destination: CountryDetailView(country: country)) {

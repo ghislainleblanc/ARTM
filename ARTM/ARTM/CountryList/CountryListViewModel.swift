@@ -11,6 +11,7 @@ import Foundation
 class CountryListViewModel: ObservableObject {
     @Published private(set) var countries = [Country]()
     @Published private(set) var isLoading = false
+    @Published private(set) var errorMessage: String?
 
     private let service: CountryServiceProtocol
 
@@ -23,10 +24,12 @@ class CountryListViewModel: ObservableObject {
             isLoading = true
 
             countries = try await service.fetchCountries()
-            
+
             isLoading = false
         } catch {
             print("Error fetching countries: \(error)")
+            isLoading = false
+            errorMessage = error.localizedDescription
         }
     }
 }

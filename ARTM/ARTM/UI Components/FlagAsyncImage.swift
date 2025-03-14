@@ -29,8 +29,8 @@ struct FlagAsyncImage: View {
 
 #Preview {
     FlagAsyncImage(url: URL(string: "https://flagcdn.com/w320/ca.png"))
-}
-
-#Preview {
+        .frame(height: 40)
+    
     FlagAsyncImage(url: URL(string: "https://foo.bar/ll.png"))
+        .frame(height: 40)
 }

@@ -27,6 +27,15 @@ struct Country: Identifiable, Decodable, Sendable {
         case common
     }
 
+    internal init(id: UUID, name: String, flag: String, continent: String, population: Int, capital: String) {
+        self.id = id
+        self.name = name
+        self.flag = flag
+        self.continent = continent
+        self.population = population
+        self.capital = capital
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = UUID()

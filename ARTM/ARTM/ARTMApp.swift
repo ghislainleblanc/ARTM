@@ -11,7 +11,7 @@ import SwiftUI
 struct ARTMApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountryListView(service: CountryService())
         }
     }
 }

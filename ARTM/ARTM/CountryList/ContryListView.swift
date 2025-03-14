@@ -25,19 +25,26 @@ struct CountryListView: View {
                 List(viewModel.countries) { country in
                     NavigationLink(destination: CountryDetailView(country: country)) {
                         HStack {
-                            AsyncImage(url: URL(string: country.flag)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 40)
-                            } placeholder: {
-                                ProgressView()
+                            AsyncImage(url: URL(string: country.flag)) { phase in
+                                if let image = phase.image {
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 40)
+                                } else if phase.error != nil {
+                                    Image(systemName: "flag.slash")
+                                        .imageScale(.large)
+                                        .frame(height: 40)
+                                } else {
+                                    ProgressView()
+                                }
                             }
 
                             Spacer()
                             
                             Text(country.name)
                         }
+                        .padding()
                     }
                 }
             }

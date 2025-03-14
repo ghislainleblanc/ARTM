@@ -5,7 +5,7 @@
 MVVM avec dependancy injection. Le Strict Concurrency Checking (Swift 6) est activé donc j'utilise un acteur pour CountryService afin de garantir le 
 thread safety.
 
-## Raccourcis et assomption
+## Raccourcis et assomptions
 
 Les requis parlaient du continent (singulier) alors j'affiche seulement le premier même si techniquement certains pays sont à cheval sur plus d'un continent.
 

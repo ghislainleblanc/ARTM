@@ -9,7 +9,8 @@ import Foundation
 
 @MainActor
 class CountryListViewModel: ObservableObject {
-    @Published var countries = [Country]()
+    @Published private(set) var countries = [Country]()
+    @Published private(set) var isLoading = false
 
     private let service: CountryServiceProtocol
 
@@ -19,7 +20,11 @@ class CountryListViewModel: ObservableObject {
 
     func loadCountries() async {
         do {
+            isLoading = true
+
             countries = try await service.fetchCountries()
+            
+            isLoading = false
         } catch {
             print("Error fetching countries: \(error)")
         }

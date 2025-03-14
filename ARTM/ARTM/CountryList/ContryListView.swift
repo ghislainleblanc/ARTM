@@ -16,18 +16,33 @@ struct CountryListView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.countries) { country in
-                NavigationLink(destination: CountryDetailView(country: country)) {
-                    HStack {
-                        Text(country.flag)
-                        Text(country.name)
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                List(viewModel.countries) { country in
+                    NavigationLink(destination: CountryDetailView(country: country)) {
+                        HStack {
+                            AsyncImage(url: URL(string: country.flag)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 40)
+                            } placeholder: {
+                                ProgressView()
+                            }
+
+                            Spacer()
+                            
+                            Text(country.name)
+                        }
                     }
                 }
             }
-            .navigationTitle("Countries")
-            .task {
-                await viewModel.loadCountries()
-            }
+        }
+        .navigationTitle("Countries")
+        .task {
+            await viewModel.loadCountries()
         }
     }
 }
+

@@ -12,10 +12,15 @@ struct CountryDetailView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text(country.flag)
-                .font(.largeTitle)
-            Text(country.name)
-                .font(.title)
+            AsyncImage(url: URL(string: country.flag)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 40)
+            } placeholder: {
+                ProgressView()
+            }
+
             Text("Continent: \(country.continent)")
             Text("Population: \(country.population)")
             Text("Capital: \(country.capital)")

@@ -42,7 +42,7 @@ struct CountryListView: View {
                 }
             }
         }
-        .navigationTitle("Countries")
+        .navigationTitle("country_list_countries")
         .task {
             await viewModel.loadCountries()
         }

@@ -21,9 +21,9 @@ struct CountryDetailView: View {
                 ProgressView()
             }
 
-            Text("Continent: \(country.continent)")
-            Text("Population: \(country.population)")
-            Text("Capital: \(country.capital)")
+            Text("country_detail_continent: \(country.continent)")
+            Text("country_detail_population: \(country.population)")
+            Text("country_detail_capital: \(country.capital)")
         }
         .padding()
         .navigationTitle(country.name)

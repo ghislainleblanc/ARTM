@@ -30,8 +30,15 @@ struct CountryDetailView: View {
     }
 }
 
-//#Preview {
-//    CountryDetailView(
-//        country: Country()
-//    )
-//}
+#Preview {
+    CountryDetailView(
+        country: Country(
+            id: UUID(),
+            name: "Canada",
+            flag: "https://flagcdn.com/w320/ca.png",
+            continent: "North America",
+            population: 38005238,
+            capital: "Ottawa"
+        )
+    )
+}

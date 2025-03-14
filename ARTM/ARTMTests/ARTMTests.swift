@@ -11,14 +11,14 @@ import Testing
 
 @MainActor
 struct ARTMTests {
-    let mockCountries = [
+    private let mockCountries = [
         Country(
             id: UUID(),
-            name: "South Georgia",
-            flag: "https://flagcdn.com/w320/gs.png",
-            continent: "Antarctica",
-            population: 30,
-            capital: "King Edward Point"
+            name: "Canada",
+            flag: "https://flagcdn.com/w320/ca.png",
+            continent: "North America",
+            population: 38005238,
+            capital: "Ottawa"
         )
     ]
 
@@ -30,7 +30,7 @@ struct ARTMTests {
         await viewModel.loadCountries()
 
         #expect(viewModel.countries.count == 1)
-        #expect(viewModel.countries.first?.name == "South Georgia")
+        #expect(viewModel.countries.first?.name == "Canada")
         #expect(viewModel.errorMessage == nil)
         #expect(!viewModel.isLoading)
     }

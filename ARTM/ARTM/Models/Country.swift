@@ -27,7 +27,14 @@ struct Country: Identifiable, Decodable, Sendable {
         case common
     }
 
-    internal init(id: UUID, name: String, flag: String, continent: String, population: Int, capital: String) {
+    internal init(
+        id: UUID,
+        name: String,
+        flag: String,
+        continent: String,
+        population: Int,
+        capital: String
+    ) {
         self.id = id
         self.name = name
         self.flag = flag
@@ -42,8 +49,10 @@ struct Country: Identifiable, Decodable, Sendable {
 
         let flags = try container.nestedContainer(keyedBy: FlagKeys.self, forKey: .flags)
         flag = try flags.decode(String.self, forKey: .png)
+
         let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
         name = try nameContainer.decode(String.self, forKey: .common)
+        
         continent = try container.decode([String].self, forKey: .continents).first ?? "Unknown"
         population = try container.decode(Int.self, forKey: .population)
         capital = try container.decode([String].self, forKey: .capital).first ?? "Unknown"

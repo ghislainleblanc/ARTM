@@ -1,2 +1,0 @@
-# ARTM
-ARTM coding challenge
